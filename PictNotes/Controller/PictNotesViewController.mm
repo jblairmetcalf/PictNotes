@@ -27,24 +27,7 @@
 {
     [super viewDidLoad];
     [self.activityIndicator stopAnimating];
-    
-    /*
-     NSArray *colors = [[NSArray alloc] initWithObjects:
-     [[UIColor alloc] initWithRed:0.00392157 green:0.0117647 blue:0.0156863 alpha:1],
-     [[UIColor alloc] initWithRed:0.843137 green:0.643137 blue:0.623529 alpha:1],
-     [[UIColor alloc] initWithRed:0.588235 green:0.145098 blue:0.235294 alpha:1],
-     [[UIColor alloc] initWithRed:0.231373 green:0.243137 blue:0.27451 alpha:1],
-     [[UIColor alloc] initWithRed:0.592157 green:0.458824 blue:0.415686 alpha:1], nil];
-     UIImage *colorsImage = [self drawColors:colors];
-     self.colorsImageView.image = colorsImage;
-     
-     NSLog(@"%@", [self validateString:@"Lorem ipsum dolor hello world."]);
-     
-     self.textView.text = [self validateString:@" 7 IT'S EASY TO APPLY! 3 ways to apply for the REI Visa@ card: M V - Visit: 5 ' Call: 1-877-734-9737 ext. 83971 n ' - Download: The REI Visa App1, 7 9 7 vu xx for:Phone or Android n Get a 5100 REI gift card when you apply by 2/28/2013 and make a purchase by 3/31/2013f : ,_,? _: 'SeeorferdetailsatREIVISAmmIreie391l L '- - - o 7 y . - , I '"];
-     */
 }
-
-
 
 - (IBAction)takePhoto:(id)sender
 {
@@ -120,31 +103,6 @@
     return colorsImage;
 }
 
-/*
- - (NSString *)validateString:(NSString *)string
- {
- NSString *validString = @"";
- NSArray *split = [string componentsSeparatedByString:@" "];
- // NSLog(@"%d", [split count]);
- for (NSString *word in split) {
- // NSString *word = [split objectAtIndex:i];
- // NSLog(@"word: %@", word);
- if ([self isDictionaryWord:word]) validString = [NSString stringWithFormat:@"%@ %@", validString, word];
- }
- return validString;
- }
- 
- - (BOOL)isDictionaryWord:(NSString*)word {
- UITextChecker *checker = [[UITextChecker alloc] init];
- NSLocale *currentLocale = [NSLocale currentLocale];
- NSString *currentLanguage = [currentLocale objectForKey:NSLocaleLanguageCode];
- NSRange searchRange = NSMakeRange(0, [word length]);
- NSRange misspelledRange = [checker rangeOfMisspelledWordInString:word range: searchRange startingAt:0 wrap:NO language: currentLanguage];
- // NSLog(@"misspelledRange.location: %lu", (unsigned long)misspelledRange.location);
- return misspelledRange.location == NSNotFound;
- }
- */
-
 - (void)convertImage
 {
     if (self.image) {
@@ -168,8 +126,6 @@
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
                     [tesseract setImage:optimizedImage];
                     [tesseract recognize];
-                    
-                    // NSString *validString = [self validateString:[tesseract recognizedText]];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         // self.textView.text = validString;
